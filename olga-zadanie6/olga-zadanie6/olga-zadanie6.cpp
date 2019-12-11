@@ -104,7 +104,7 @@ int main()
 		// 2. dodaj do menu kolejn¹ opcjê, która pozwoli zakoñczyæ pracê pêtli
 		// 2.1 do zakoñczenia wykorzystaj instrukcjê break
 		// 3. wykorzystaj iterator w celu zliczania ile razy wykonano pêtlê. Po wy³amaniu siê z niej wyœwietl komunikat z t¹ iloœci¹
-		if (!switch_current_exercise)
+		if (switch_current_exercise)
 		{	
 			int iterator = 0;
 
@@ -112,10 +112,10 @@ int main()
 			{
 
 
-				int liczba_jeden = 0;
-				int liczba_dwa = 0;
+				float liczba_jeden = 0;
+				float liczba_dwa = 0;
 				int u_input = 0;
-				int suma = 0;
+				float suma = 0;
 				bool rigth_try = false;
 				bool false_try = true;
 
@@ -133,10 +133,10 @@ int main()
 				{
 					if (!false_try)
 					{
-						std::cout << "Wybrales bledny numer dzialania" << "\n\n";
+						std::cout << "Przykro mi, wybrales bledny numer dzialania" << "\n\n";
 					}
 
-					std::cout << "Podaj numer opcji" << "\n\n";
+					std::cout << "Podaj prosze numer opcji" << "\n\n";
 					std::cin >> u_input;
 					std::cout << "\n\n";
 
@@ -157,14 +157,14 @@ int main()
 					break;
 				}
 
-				std::cout << "Podaj pierwsza liczbe" << "\n\n";
+				std::cout << "Podaj prosze pierwsza liczbe" << "\n\n";
 
 				std::cin >> liczba_jeden;
 
 				std::cout << "\n";
 
 
-				std::cout << "Podaj druga liczbe" << "\n\n";
+				std::cout << "Podaj prosze druga liczbe" << "\n\n";
 
 				std::cin >> liczba_dwa;
 
@@ -185,9 +185,9 @@ int main()
 				case 3:
 					do
 					{
-						if (!false_try)
+						if (false_try)
 						{
-							std::cout << "Nie mozna dzielic przez 0";
+							std::cout << "Przepraszam, ale nie mozna dzielic przez 0";
 						}
 
 						if (liczba_dwa != 0)
@@ -207,6 +207,7 @@ int main()
 					suma = liczba_jeden * liczba_dwa;
 					std::cout << "Twoj wynik wynosi: " << suma;
 					break;
+
 				default:
 					std::cout << "Niepoprawna opcja" << "\n";
 					break; 
@@ -219,7 +220,7 @@ int main()
 				
 			}
 
-			std::cout << "Twoja petla wykonala sie " << iterator << " razy." << "\n\n";
+			std::cout << "Twoja petla wykonala sie " << iterator << " razy. Mam nadzieje, ze dobrze sie bawiles, uzytkowniku." << "\n\n";
 		}
 		/*KONIEC ZADANIE 6.1*/
 		else
@@ -237,9 +238,87 @@ int main()
 			int trzecia_liczba_ktora_mialam_pobrac_nie_wiem_jeszcze_po_co = 1;
 			bool right_try = false;
 			bool false_try = true;
-			int iterator = 1;
+			bool right_try_2 = false;
+			bool false_try_2 = true;
+			bool right_try_3 = false;
+			bool false_try_3 = true;
+			int iterator = 0;
 
+			do
+			{	
+				if (!false_try)
+				{
+					std::cout << "Twoja liczba maksymalna musi byc wieksza niz minimalna, podaj je prosze jeszcze raz: \n\n";
+				}
+
+				std::cout << "Podaj prosze Twoja liczbe minimalna: ";
+				std::cin >> liczba_losowana_min; 
+				std::cout << "\n\n Podaj prosze Twoja liczbe maksymalna: ";
+				std::cin >> liczba_losowana_max;
+				std::cout << "\n\n";
+
+				if (liczba_losowana_min < liczba_losowana_max)
+				{
+					right_try = true;
+				}
+
+				else if (false_try)
+				{
+					false_try = false;
+				}
+
+
+			} while (right_try == false);
+
+			do
+			{	
+				if (!false_try_2)
+				{
+					std::cout << "Twoja liczba nie spelnia tych wymogow, sprobuj jeszcze raz: \n\n";
+				}
+
+				std::cout << "Podaj prosze liczbe, ktora bedzie wieksza lub rowna liczbie minimalnej oraz mniejsza lub rowna liczbie maksymalnej: \n\n";
+				std::cin >> trzecia_liczba_ktora_mialam_pobrac_nie_wiem_jeszcze_po_co;
+				std::cout << "\n\n";
+				
+				if ((trzecia_liczba_ktora_mialam_pobrac_nie_wiem_jeszcze_po_co >= liczba_losowana_min) && (trzecia_liczba_ktora_mialam_pobrac_nie_wiem_jeszcze_po_co <= liczba_losowana_max))
+				{
+					right_try_2 = true;
+				}
+
+				else if (false_try_2)
+				{
+					false_try_2 = false;
+				}
+
+
+			} while (right_try_2 == false);
+
+		
+			int czwarta_liczba_bo_arek_ma_problemy_ze_soba = 1;
+			
+
+			do
+			{
+			
+				czwarta_liczba_bo_arek_ma_problemy_ze_soba = arek::random_int(liczba_losowana_min, liczba_losowana_max);
+				std::cout << czwarta_liczba_bo_arek_ma_problemy_ze_soba << "\n\n";
+
+				iterator++;
+
+			} while (trzecia_liczba_ktora_mialam_pobrac_nie_wiem_jeszcze_po_co != czwarta_liczba_bo_arek_ma_problemy_ze_soba);
+
+			if (iterator > trzecia_liczba_ktora_mialam_pobrac_nie_wiem_jeszcze_po_co / 2)
+			{
+				std::cout << "Liczba prob losowania tej liczby jest mniejsza od polowy tej liczby z zakresu. \n\n";
+			}
+
+			else
+			{
+				std::cout << "Liczba prob losowania tej liczby jest wieksza od polowy tej liczby z zakresu. \n\n";
+			}
 		}
+
 		/*KONIEC ZADANIE 6.2*/
 	}
 }
