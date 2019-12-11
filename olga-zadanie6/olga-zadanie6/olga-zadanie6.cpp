@@ -6,9 +6,9 @@
 int main()
 {
 	bool example = true;
-	if (example)
+	if (!example)
 	{
-		int current_example = 0;
+		int current_example = 2;
 		
 		/*Przyk³ad 6.0*/
 		/*Funkcja arek::random_int()*/
@@ -105,102 +105,121 @@ int main()
 		// 2.1 do zakoñczenia wykorzystaj instrukcjê break
 		// 3. wykorzystaj iterator w celu zliczania ile razy wykonano pêtlê. Po wy³amaniu siê z niej wyœwietl komunikat z t¹ iloœci¹
 		if (!switch_current_exercise)
-		{
-			int liczba_jeden = 0;
-			int liczba_dwa = 0;
-			int u_input = 0;
-			int suma = 0;
-			bool rigth_try = false;
-			bool false_try = true;
+		{	
+			int iterator = 0;
 
-
-
-			std::cout << "Podaj pierwsza liczbe" << "\n\n";
-
-			std::cin >> liczba_jeden;
-
-			std::cout << "\n";
-
-			std::cout << "#1. Dodawanie                   #" << "\n\n";
-			std::cout << "#2. Odejmowanie                 #" << "\n\n";
-			std::cout << "#3. Dzielenie                   #" << "\n\n";
-			std::cout << "#4. Mnozenie                    #" << "\n\n";
-
-
-			do
+			while (true)
 			{
-				if (!false_try)
-				{
-					std::cout << "Wybrales bledny numer dzialania" << "\n\n";
-				}
-
-				std::cout << "Podaj numer opcji" << "\n\n";
-				std::cin >> u_input;
-				std::cout << "\n\n";
-
-				if (u_input == 1 || u_input == 2 || u_input == 3 || u_input == 4)
-				{
-					rigth_try = true;
-				}
-
-				else if (false_try)
-				{
-					false_try = false;
-				}
-
-			} while (rigth_try == false);
 
 
-			std::cout << "Podaj druga liczbe" << "\n\n";
+				int liczba_jeden = 0;
+				int liczba_dwa = 0;
+				int u_input = 0;
+				int suma = 0;
+				bool rigth_try = false;
+				bool false_try = true;
 
-			std::cin >> liczba_dwa;
 
-			std::cout << "\n";
 
-			switch (u_input)
-			{
-			case 1:
-				suma = liczba_jeden + liczba_dwa;
-				std::cout << "Twoj wynik wynosi: " << suma;
-				break;
+				
 
-			case 2:
-				suma = liczba_jeden - liczba_dwa;
-				std::cout << "Twoj wynik wynosi: " << suma;
-				break;
+				std::cout << "1. Dodawanie" << "\n\n";
+				std::cout << "2. Odejmowanie" << "\n\n";
+				std::cout << "3. Dzielenie" << "\n\n";
+				std::cout << "4. Mnozenie" << "\n\n";
+				std::cout << "5. Zakoncz program" << "\n\n";
 
-			case 3:
 				do
 				{
 					if (!false_try)
 					{
-						std::cout << "Nie mozna dzielic przez 0";
+						std::cout << "Wybrales bledny numer dzialania" << "\n\n";
 					}
 
-					if (liczba_dwa != 0)
+					std::cout << "Podaj numer opcji" << "\n\n";
+					std::cin >> u_input;
+					std::cout << "\n\n";
+
+					if (u_input == 1 || u_input == 2 || u_input == 3 || u_input == 4 || u_input == 5 )
 					{
-						suma = liczba_jeden / liczba_dwa;
-						std::cout << "Twoj wynik wynosi: " << suma << "\n\n";
 						rigth_try = true;
 					}
-					else if (liczba_dwa == 0)
+
+					else if (false_try)
 					{
 						false_try = false;
 					}
+
 				} while (rigth_try == false);
-				break;
 
-			case 4:
-				suma = liczba_jeden * liczba_dwa;
-				std::cout << "Twoj wynik wynosi: " << suma;
-				break;
+				if (u_input == 5)
+				{
+					break;
+				}
 
-			default:
-				std::cout << "Niepoprawna opcja" << "\n";
+				std::cout << "Podaj pierwsza liczbe" << "\n\n";
+
+				std::cin >> liczba_jeden;
+
+				std::cout << "\n";
+
+
+				std::cout << "Podaj druga liczbe" << "\n\n";
+
+				std::cin >> liczba_dwa;
+
+				std::cout << "\n";
+
+				switch (u_input)
+				{
+				case 1:
+					suma = liczba_jeden + liczba_dwa;
+					std::cout << "Twoj wynik wynosi: " << suma;
+					break;
+
+				case 2:
+					suma = liczba_jeden - liczba_dwa;
+					std::cout << "Twoj wynik wynosi: " << suma;
+					break;
+
+				case 3:
+					do
+					{
+						if (!false_try)
+						{
+							std::cout << "Nie mozna dzielic przez 0";
+						}
+
+						if (liczba_dwa != 0)
+						{
+							suma = liczba_jeden / liczba_dwa;
+							std::cout << "Twoj wynik wynosi: " << suma << "\n\n";
+							rigth_try = true;
+						}
+						else if (liczba_dwa == 0)
+						{
+							false_try = false;
+						}
+					} while (rigth_try == false);
+					break;
+
+				case 4:
+					suma = liczba_jeden * liczba_dwa;
+					std::cout << "Twoj wynik wynosi: " << suma;
+					break;
+				default:
+					std::cout << "Niepoprawna opcja" << "\n";
+					break; 
+				}
+
+				std::cout << "\n\n";
+
+				iterator++;
+
+				
 			}
 
-			std::cout << "\n";
-			std::cout << "Czy juz moge zarabiac 6tys netto?" << "\n";
+			std::cout << "Twoja petla wykonala sie " << iterator << " razy." << "\n\n";
 		}
 		/*KONIEC ZADANIE 6.1*/
 		else
@@ -211,8 +230,15 @@ int main()
 		// 3. w odpowiedniej pêtli bêdzie losowa³ liczbê z przedzia³u tak d³ugo a¿ bêdzie ona równa trzeciej podanej liczbie
 		// 3.1. przy pomocy iteratora bêdzie zlicza³ iloœæ prób wylosowania tej liczby
 		// 4. wypisze na konsolê, czy liczba prób jest mniejsza od po³owy tej liczby
+
 		{
-			
+			int liczba_losowana_min = 1;
+			int liczba_losowana_max = 1;
+			int trzecia_liczba_ktora_mialam_pobrac_nie_wiem_jeszcze_po_co = 1;
+			bool right_try = false;
+			bool false_try = true;
+			int iterator = 1;
+
 		}
 		/*KONIEC ZADANIE 6.2*/
 	}
